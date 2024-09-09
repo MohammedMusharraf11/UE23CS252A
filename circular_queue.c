@@ -69,3 +69,56 @@ int main() {
 
     return 0;
 }
+
+
+#include <stdio.h>
+
+#define MAX_SIZE 10
+
+int queue[MAX_SIZE];
+int start = -1;
+int end = -1;
+int qSize = 0;
+
+void push(int item) {
+    if(qSize == MAX_SIZE) {  // Queue is full
+        printf("The Queue is Full\n");
+        return;
+    }
+    if(qSize == 0) {  // First element
+        start = 0;
+        end = 0;
+    } else {
+        end = (end + 1) % MAX_SIZE;  // Circular increment
+    }
+    queue[end] = item;
+    qSize++;
+}
+
+int pop() {
+    if(qSize == 0) {  // Queue is empty
+        printf("Queue is Empty!!\n");
+        return -1;  // Return an invalid value or error code
+    }
+    
+    int del = queue[start];
+    
+    if(qSize == 1) {  // After removing the last element, reset the queue
+        start = -1;
+        end = -1;
+    } else {
+        start = (start + 1) % MAX_SIZE;  // Circular increment
+    }
+    qSize--;
+    return del;
+}
+
+int main() {
+    printf("Popped element: %d\n", pop());
+    push(10);
+    push(20);
+    printf("Popped element: %d\n", pop());
+    printf("Popped element: %d\n", pop());  
+    return 0;
+}
+
