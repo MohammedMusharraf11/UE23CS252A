@@ -130,5 +130,3 @@ NODE * delpos(NODE * head, int pos) {
 }
 ```
 
-
-`````
