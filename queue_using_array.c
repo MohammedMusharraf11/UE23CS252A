@@ -1,14 +1,19 @@
 // Online C compiler to run C program online
 #include <stdio.h>
 
-void InsertQ(int item, int *rear,int *q){
-    if(rear==QUE_SIZE-1){
-        printf("Stack is Overflow");
-        return;
+int insert(int x, int *q, int *r, int *f) {
+    if (*r == SIZE - 1) {  // Queue is full
+        printf("Queue is Full");
+        return -1;
+    } else {
+        if (*f == -1) {  // If inserting the first element
+            *f = 0;
+        }
+        *r = *r + 1;    // Increment rear
+        q[*r] = x;      // Insert the element at the rear
+        // q[++(*r)] =x;
+        return 0;
     }
-    *rear = *rear + 1;
-    q[*rear] = item;
-    // q[++(*rear)] = item;
 }
 
 int deleteQ(int *front, int *rear, int *q){
