@@ -35,7 +35,7 @@
    - Ensure you handle the case when the queue is empty.
 
 ## Inserting
-```
+```c
 int insert(int x, int *q, int *r, int *f) {
     if (*r == SIZE - 1) {  // Queue is full
         printf("Queue is Full");
@@ -52,7 +52,7 @@ int insert(int x, int *q, int *r, int *f) {
 ```
 
 ## Deleting
-```
+```c
 int delete(int *q, int *f, int *r) {
     if (*f == -1) {  // Queue is empty
         printf("Queue is Empty");
@@ -70,7 +70,7 @@ int delete(int *q, int *f, int *r) {
 ```
 
 ## Displaying
-```
+```c
 void display(int *q, int *r, int *f) {
     if (*f == -1) {
         printf("The Queue is Empty!!\n");  // Added new line for better formatting
