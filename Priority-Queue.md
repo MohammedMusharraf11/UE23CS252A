@@ -108,3 +108,18 @@ void qdisplay(element_t *pq, int count) {
     }
 }
 ```
+## Ascending Priority Queue
+```c
+while ((j >= 0) && (pq[j].pty > temp.pty)) { // Note the > comparison
+    pq[j + 1] = pq[j];
+    j--;
+}
+```
+Condition: `pq[j].pty > temp.pty`
+This condition checks if the priority of the current element is greater than the priority of the new element being inserted (temp.pty). If true, it means that the new element has a higher priority (lower number).
+Action: `pq[j + 1] = pq[j];`
+This shifts the current element to the right to make space for the new element, ensuring that lower priority values come first in the queue.
+
+
+## Descending Priority Queue
+In a descending priority queue, the goal is to allow elements with higher numerical priority values to be served first. The code for insertion will look like this:
