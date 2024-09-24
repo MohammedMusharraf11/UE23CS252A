@@ -35,6 +35,57 @@
 8. **Display Operation**:
    - Always print elements from `f` to `r`, inclusive.
    - Ensure you handle the case when the queue is empty.
+  
+Inserting Array Based:
+```c
+int insert(int x, int *q, int *r, int *f) {
+    if (*r == SIZE - 1) {  // Queue is full
+        printf("Queue is Full");
+        return -1;
+    } else {
+        if (*f == -1) {  // If inserting the first element
+            *f = 0;
+        }
+        *r = *r + 1;    // Increment rear
+        q[*r] = x;      // Insert the element at the rear
+        return 0;
+    }
+}
+```
+
+Deleting Array Based:
+```c
+int delete(int *q, int *f, int *r) {
+    if (*f == -1) {  // Queue is empty
+        printf("Queue is Empty");
+        return -1;
+    } else {
+        int x = q[*f];  // Store the value to be deleted
+        if (*f == *r) { // If the queue has only one element
+            *f = *r = -1;  // Reset both front and rear pointers
+        } else {
+            (*f)++;  // Move front to the next element
+        }
+        return x;  // Return the deleted element
+    }
+}
+```
+
+Displaying Array Based:
+```c
+void display(int *q, int *r, int *f) {
+    if (*f == -1) {
+        printf("The Queue is Empty!!\n");  // Added new line for better formatting
+    } else {
+        int i = *f;
+        while (i <= *r) {  // Corrected condition to include elements from front to rear
+            printf("%d\t", q[i]);
+            i++;
+        }
+        printf("\n");  // Print new line after displaying all elements for better formatting
+    }
+}
+```
 
 ## Linked List Queue Implementation
 
@@ -62,58 +113,9 @@
 8. **Error Handling**:
    - The queue must handle cases where deletion is attempted on an empty queue, which can be managed through proper checks in the deletion function.
 
-## Inserting Array Based:
-```c
-int insert(int x, int *q, int *r, int *f) {
-    if (*r == SIZE - 1) {  // Queue is full
-        printf("Queue is Full");
-        return -1;
-    } else {
-        if (*f == -1) {  // If inserting the first element
-            *f = 0;
-        }
-        *r = *r + 1;    // Increment rear
-        q[*r] = x;      // Insert the element at the rear
-        return 0;
-    }
-}
-```
 
-## Deleting Array Based:
-```c
-int delete(int *q, int *f, int *r) {
-    if (*f == -1) {  // Queue is empty
-        printf("Queue is Empty");
-        return -1;
-    } else {
-        int x = q[*f];  // Store the value to be deleted
-        if (*f == *r) { // If the queue has only one element
-            *f = *r = -1;  // Reset both front and rear pointers
-        } else {
-            (*f)++;  // Move front to the next element
-        }
-        return x;  // Return the deleted element
-    }
-}
-```
 
-## Displaying Array Based:
-```c
-void display(int *q, int *r, int *f) {
-    if (*f == -1) {
-        printf("The Queue is Empty!!\n");  // Added new line for better formatting
-    } else {
-        int i = *f;
-        while (i <= *r) {  // Corrected condition to include elements from front to rear
-            printf("%d\t", q[i]);
-            i++;
-        }
-        printf("\n");  // Print new line after displaying all elements for better formatting
-    }
-}
-```
-
-## Inserting LL Based:
+Inserting LL Based:
 ```c
 // Insert an element at the rear of the queue
 void insert(int x, struct Node** front, struct Node** rear) {
@@ -131,7 +133,7 @@ void insert(int x, struct Node** front, struct Node** rear) {
 }
 ```
 
-## Deleting LL Based:
+Deleting LL Based:
 ```c
 // Delete an element from the front of the queue
 int delete(struct Node** front, struct Node** rear) {
@@ -153,7 +155,7 @@ int delete(struct Node** front, struct Node** rear) {
 }
 ```
 
-## Displaying LL Based:
+Displaying LL Based:
 ```c
 // Display all elements of the queue
 void display(struct Node* front) {
@@ -171,7 +173,7 @@ void display(struct Node* front) {
 }
 ```
 
-# MAIN Function:
+## MAIN Function[LL Bsed]:
 ```c
 int main() {
     struct Node* front = NULL;
