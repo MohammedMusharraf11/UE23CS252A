@@ -1,4 +1,5 @@
-## Inserting:
+## Array Based Circular LL Implementation:
+Inserting:
 ```c
 int insert(int x, int *q, int *f, int *r) {
     // Check for queue full
@@ -16,7 +17,7 @@ int insert(int x, int *q, int *f, int *r) {
     return 0;
 }
 ```
-## Deleting:
+Deleting:
 ```c
 int delete(int *q, int *f, int *r) {
     // Check if queue is empty
@@ -35,6 +36,27 @@ int delete(int *q, int *f, int *r) {
 }
 ```
 
-## Displaying:
+Displaying:
 
 Display function reamins same only increment of i is changed from `i++;` to `i =  (i+1) % SIZE;`
+
+## LL Based Circular Queue Implementing:
+Inserting
+```c
+// Function to insert an element at the rear of the circular queue
+void insert(int x, struct Node** front, struct Node** rear) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = x;
+
+    // If queue is empty, both front and rear will point to the new node
+    if (*rear == NULL) {  // Queue is empty
+        *front = *rear = newNode;
+        newNode->next = *front;  // Point the new node to itself
+    } else {
+        (*rear)->next = newNode;  // Link the old rear to the new node
+        newNode->next = *front;    // Link the new node to the front
+        *rear = newNode;           // Move rear to point to the new node
+    }
+}
+```
+
