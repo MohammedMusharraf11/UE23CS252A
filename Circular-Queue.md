@@ -59,4 +59,47 @@ void insert(int x, struct Node** front, struct Node** rear) {
     }
 }
 ```
+Deleting:
+```c
+// Function to delete an element from the front of the circular queue
+int delete(struct Node** front, struct Node** rear) {
+    if (*front == NULL) {
+        printf("Queue is Empty\n");
+        return -1;
+    }
+
+    struct Node* temp = *front;
+    int x = temp->data;
+
+    // If the queue has only one node
+    if (*front == *rear) {
+        *front = *rear = NULL;  // Queue becomes empty
+    } else {
+        *front = (*front)->next;  // Move front to the next node
+        (*rear)->next = *front;    // Update rear to point to the new front
+    }
+
+    free(temp);
+    return x;  // Return the deleted element
+}
+```
+Displaying
+**Display is almost same but here we iterate unitll we reach back to `front` there it was `NULL`**
+```c
+void display(struct Node* front) {
+    if (front == NULL) {
+        printf("The Queue is Empty!!\n");
+        return;
+    }
+
+    struct Node* temp = front;
+    do {
+        printf("%d\t", temp->data);
+        temp = temp->next;
+    } while (temp != front);  // Loop until we reach the front again
+    printf("\n");
+}
+```
+
+
 
